@@ -1,0 +1,25 @@
+services:
+
+  mysql:
+    image: mysql:8.0.35
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "33306:3306"
+    networks:
+      database: {}
+    environment:
+      MYSQL_DATABASE: webapptsindicato
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: root
+    volumes:
+      - mysql:/var/lib/mysql
+    #  - ./init-scripts:/docker-entrypoint-initdb.d  # Include custom initialization scripts
+    #restart: always
+
+volumes:
+  mysql:
+    driver: "local"
+networks:
+  database:
+    external: true
