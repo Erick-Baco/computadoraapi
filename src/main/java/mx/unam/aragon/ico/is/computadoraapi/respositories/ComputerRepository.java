@@ -5,4 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ComputerRepository extends CrudRepository<Computer, Integer> {
     public Computer findById(int id);
+    public Computer deleteById(int id);
 }
